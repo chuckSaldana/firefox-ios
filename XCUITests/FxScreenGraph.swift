@@ -146,9 +146,9 @@ class Action {
     static let ToggleBookmarksInNewTab = "ToggleBookmarksInNewTab"
     static let ToggleHistoryInNewTab = "ToggleHistoryInNewTab"
 
-    static let ShowBlankPage = "ShowBlankPage"
-    static let ShowBookmarksPage = "ShowBookmarksPage"
-    static let ShowHistoryPage = "ShowHistoryPage"
+    static let SelectNewTabAsBlankPage = "SelectNewTabAsBlankPage"
+    static let SelectNewTabAsBookmarksPage = "SelectNewTabAsBookmarksPage"
+    static let SelectNewTabAsHistoryPage = "SelectNewTabAsHistoryPage"
 
     static let AcceptClearPrivateData = "AcceptClearPrivateData"
 
@@ -490,14 +490,14 @@ func createScreenGraph(for test: XCTestCase, with app: XCUIApplication) -> Scree
     map.addScreenState(NewTabChoiceSettings) { screenState in
         let table = app.tables["NewTabPage.Setting.Options"]
         screenState.backAction = navigationControllerBackAction
-        screenState.gesture(forAction: Action.ShowBlankPage) { UserState in
-            table.cells.staticTexts["Show a Blank Page"].tap()
+        screenState.gesture(forAction: Action.SelectNewTabAsBlankPage) { UserState in
+            table.cells["Blank"].tap()
         }
-        screenState.gesture(forAction: Action.ShowBookmarksPage) { UserState in
-            table.cells.staticTexts["Show your Bookmarks"].tap()
+        screenState.gesture(forAction: Action.SelectNewTabAsBookmarksPage) { UserState in
+            table.cells["Bookmarks"].tap()
         }
-        screenState.gesture(forAction: Action.ShowHistoryPage) { UserState in
-            table.cells.staticTexts["Show your History"].tap()
+        screenState.gesture(forAction: Action.SelectNewTabAsHistoryPage) { UserState in
+            table.cells["History"].tap()
         }
     }
 

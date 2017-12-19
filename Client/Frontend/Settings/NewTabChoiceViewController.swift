@@ -69,7 +69,7 @@ class NewTabChoiceViewController: UITableViewController {
         cell.accessoryType = (currentChoice == option) ? .checkmark : .none
         cell.textLabel?.attributedText = NSAttributedString.tableRowTitle(option.settingTitle, enabled: enabled)
         cell.isUserInteractionEnabled = enabled
-
+        cell.accessibilityIdentifier = NSLocalizedString(option.rawValue, comment: "Option in settings to show \(option) when you open a new tab")
         return cell
     }
 
